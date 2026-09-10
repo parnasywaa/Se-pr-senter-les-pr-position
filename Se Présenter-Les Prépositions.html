@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="fr" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Se Présenter - Évaluation des Prépositions</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Quicksand & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        candyPink: {
+                            50: '#fdf2f8',
+                            100: '#fce7f3',
+                            200: '#fbcfe8',
+                            300: '#f472b6',
+                            400: '#e879f9',
+                            500: '#ec4899',
+                            600: '#db2777',
+                            700: '#be185d'
+                        },
+                        candySky: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0284c7'
+                        },
+                        candyLilac: {
+                            50: '#faf5ff',
+                            100: '#f3e8ff',
+                            200: '#e9d5ff',
+                            300: '#d8b4fe',
+                            400: '#c084fc',
+                            500: '#a855f7',
+                            600: '#9333ea',
+                            900: '#3b0764',
+                            950: '#2e1065'
+                        },
+                        candyPeach: {
+                            100: '#ffedd5',
+                            200: '#fed7aa',
+                            300: '#fdba74',
+                            400: '#fb923c'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Outfit', 'sans-serif'],
+                        body: ['Quicksand', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #fbcfe8 0%, #e9d5ff 35%, #bae6fd 70%, #fed7aa 100%);
+            background-attachment: fixed;
+            color: #2e1065;
+        }
+
+        /* Glassmorphism Cotton Candy Sky Cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 12px 32px -8px rgba(168, 85, 247, 0.18);
+        }
+
+        .glass-card-dark {
+            background: rgba(46, 16, 101, 0.93);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(216, 180, 254, 0.35);
+            color: #faf5ff;
+            box-shadow: 0 20px 40px -10px rgba(46, 16, 101, 0.4);
+        }
+
+        /* Choice Option Styling */
+        .choice-btn {
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .choice-btn:hover:not(.disabled) {
+            transform: translateY(-2px);
+            border-color: #c084fc;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 8px 20px -4px rgba(236, 72, 153, 0.25);
+        }
+
+        .choice-btn.selected {
+            background: linear-gradient(135deg, #fce7f3 0%, #f3e8ff 100%) !important;
+            border-color: #ec4899 !important;
+            box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.3);
+            color: #831843 !important;
+        }
+
+        /* Matching Item Cards */
+        .match-card {
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            user-select: none;
+        }
+
+        .match-card:hover:not(.disabled) {
+            transform: translateY(-2px);
+            border-color: #a855f7;
+            box-shadow: 0 6px 16px -2px rgba(168, 85, 247, 0.25);
+        }
+
+        .match-card.active-select {
+            border-color: #ec4899 !important;
+            background: #fce7f3 !important;
+            box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.35);
+            transform: scale(1.02);
+        }
+
+        /* Dynamic Distinct Pastel Pair Colors for Matching */
+        .pair-color-0 {
+            background: #fce7f3 !important;
+            border-color: #f472b6 !important;
+            color: #831843 !important;
+            box-shadow: 0 4px 12px rgba(244, 114, 182, 0.25);
+        }
+        .pair-color-1 {
+            background: #e0f2fe !important;
+            border-color: #38bdf8 !important;
+            color: #0369a1 !important;
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.25);
+        }
+        .pair-color-2 {
+            background: #f3e8ff !important;
+            border-color: #c084fc !important;
+            color: #6b21a8 !important;
+            box-shadow: 0 4px 12px rgba(192, 132, 252, 0.25);
+        }
+        .pair-color-3 {
+            background: #ffedd5 !important;
+            border-color: #fb923c !important;
+            color: #9a3412 !important;
+            box-shadow: 0 4px 12px rgba(251, 146, 60, 0.25);
+        }
+        .pair-color-4 {
+            background: #dcfce7 !important;
+            border-color: #4ade80 !important;
+            color: #166534 !important;
+            box-shadow: 0 4px 12px rgba(74, 222, 128, 0.25);
+        }
+
+        /* Validation Colors */
+        .correct-bg {
+            background: #dcfce7 !important;
+            border-color: #22c55e !important;
+            color: #14532d !important;
+        }
+
+        .incorrect-bg {
+            background: #ffe4e6 !important;
+            border-color: #f43f5e !important;
+            color: #881337 !important;
+        }
+
+        /* Floating Cloud Ambient Animations */
+        @keyframes floatCloud {
+            0%, 100% { transform: translateY(0px) scale(1); opacity: 0.6; }
+            50% { transform: translateY(-18px) scale(1.05); opacity: 0.85; }
+        }
+
+        .cloud-glow-1 { animation: floatCloud 9s ease-in-out infinite; }
+        .cloud-glow-2 { animation: floatCloud 12s ease-in-out infinite 3s; }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: rgba(243, 232, 255, 0.5); }
+        ::-webkit-scrollbar-thumb { background: #c084fc; border-radius: 9999px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a855f7; }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col justify-between relative overflow-x-hidden selection:bg-candyPink-300 selection:text-candyLilac-950">
+
+    <!-- Ambient Background Elements -->
+    <div class="fixed -top-24 -left-24 w-96 h-96 bg-candyPink-300/40 rounded-full blur-3xl pointer-events-none cloud-glow-1"></div>
+    <div class="fixed -bottom-24 -right-24 w-96 h-96 bg-candySky-300/50 rounded-full blur-3xl pointer-events-none cloud-glow-2"></div>
+    <div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-candyLilac-200/30 rounded-full blur-3xl pointer-events-none"></div>
+
+    <header class="w-full py-4 px-4 sm:px-8 glass-card sticky top-0 z-40 border-b border-white/60">
+        <div class="max-w-5xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-4">
+            
+            <!-- Main Title -->
+            <div class="flex items-center space-x-3.5 text-center lg:text-left">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-candyPink-400 via-candyLilac-400 to-candySky-400 flex items-center justify-center text-white shadow-md text-xl">
+                    <i class="fa-solid fa-cloud-sun"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-extrabold font-heading text-candyLilac-950 tracking-tight" id="main-title-display">Se Présenter</h1>
+                    <p class="text-xs font-bold text-candyPink-600 uppercase tracking-wider flex items-center justify-center lg:justify-start gap-1.5 mt-0.5">
+                        <i class="fa-solid fa-sparkles text-candyLilac-500 text-[10px]"></i> Média d'Évaluation Grammaticale
+                    </p>
+                </div>
+            </div>
+
+            <!-- Author & Course Metadata -->
+            <div class="flex flex-wrap items-center justify-center gap-3">
+                <!-- Auteur & NIM -->
+                <div class="bg-white/80 px-4 py-2 rounded-2xl border border-candyLilac-200 shadow-xs flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-xl bg-candyPink-100 text-candyPink-600 flex items-center justify-center text-xs font-bold">
+                        <i class="fa-solid fa-id-card"></i>
+                    </div>
+                    <div class="text-left text-xs">
+                        <span class="block text-candyLilac-900/60 font-bold text-[9px] uppercase tracking-wider">Auteur & NIM</span>
+                        <span class="font-bold text-candyLilac-950" id="author-display">Tia Aris M. • (2406519)</span>
+                    </div>
+                </div>
+
+                <!-- Matière -->
+                <div class="bg-white/80 px-4 py-2 rounded-2xl border border-candyLilac-200 shadow-xs flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-xl bg-candySky-100 text-candySky-500 flex items-center justify-center text-xs font-bold">
+                        <i class="fa-solid fa-book-bookmark"></i>
+                    </div>
+                    <div class="text-left text-xs">
+                        <span class="block text-candyLilac-900/60 font-bold text-[9px] uppercase tracking-wider">Matière</span>
+                        <span class="font-bold text-candyLilac-950" id="quiz-title-display">Les Prépositions de la Présentation</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <main class="max-w-4xl w-full mx-auto p-4 sm:p-6 flex-grow flex flex-col justify-center my-2 relative z-20">
+
+        <!-- Banner de la Session -->
+        <div class="glass-card rounded-3xl p-5 sm:p-7 mb-6">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">
+                <div>
+                    <span id="session-badge" class="px-4 py-1.5 rounded-full text-xs font-extrabold bg-gradient-to-r from-candyPink-400 to-candyLilac-400 text-white tracking-wider uppercase shadow-xs">
+                        Session 1 / 2
+                    </span>
+                    <h2 class="text-xl sm:text-2xl font-heading font-extrabold text-candyLilac-950 mt-2" id="session-title">
+                        Choix de la Préposition Correcte (QCM)
+                    </h2>
+                </div>
+
+                <!-- Progression -->
+                <div class="bg-white/90 px-5 py-2.5 rounded-2xl border border-candyLilac-200 text-center self-end sm:self-center min-w-[140px] shadow-xs">
+                    <span class="block text-[10px] font-bold text-candyLilac-600 uppercase tracking-wider">Complété</span>
+                    <span class="text-xl font-extrabold text-candyPink-600 font-heading" id="answered-counter">0 / 5</span>
+                </div>
+            </div>
+
+            <!-- Instruction pédagogique -->
+            <div class="text-xs sm:text-sm text-candyLilac-950 bg-white/70 p-4 rounded-2xl border border-candyLilac-200 flex items-start gap-3">
+                <div class="w-8 h-8 rounded-xl bg-candyLilac-100 text-candyLilac-600 flex-shrink-0 flex items-center justify-center font-bold text-sm shadow-xs mt-0.5">
+                    <i class="fa-solid fa-lightbulb"></i>
+                </div>
+                <p class="leading-relaxed font-semibold" id="session-consigne">
+                    Sélectionnez la préposition appropriée pour chaque phrase afin de valider vos connaissances. Vous devez répondre à <strong class="text-candyPink-600">toutes les questions</strong> avant de pouvoir valider.
+                </p>
+            </div>
+        </div>
+
+        <div id="questions-container" class="space-y-4 mb-6"></div>
+
+        <!-- Boutons d'Action -->
+        <div class="flex items-center justify-between gap-4 mt-2">
+            <button id="btn-reset" onclick="resetCurrentSession()" class="px-5 py-3 rounded-2xl bg-white/80 hover:bg-white text-candyLilac-950 font-bold text-xs sm:text-sm border border-candyLilac-200 shadow-xs transition-all hover:scale-105 flex items-center gap-2">
+                <i class="fa-solid fa-arrow-rotate-left text-candyPink-500"></i> Réinitialiser
+            </button>
+
+            <button id="btn-validate" onclick="validateCurrentSession()" class="px-6 py-3 rounded-2xl bg-gradient-to-r from-candyPink-500 to-candyLilac-500 hover:opacity-95 text-white font-extrabold text-xs sm:text-sm shadow-md transition-all flex items-center gap-2 opacity-50 cursor-not-allowed" disabled>
+                <i class="fa-solid fa-check"></i> Valider les Réponses
+            </button>
+
+            <button id="btn-next" onclick="nextSession()" class="hidden px-6 py-3 rounded-2xl bg-gradient-to-r from-candyLilac-500 to-candySky-500 hover:opacity-95 text-white font-extrabold text-xs sm:text-sm shadow-md transition-all hover:scale-105 flex items-center gap-2">
+                <span id="next-btn-text">Session Suivante</span> <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </main>
+
+    <!-- Modal des Explications de la Session -->
+    <div id="explanation-modal" class="fixed inset-0 bg-candyLilac-950/75 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+        <div class="glass-card-dark rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-candyPink-300/40 transform transition-all scale-95 opacity-0 duration-300 max-h-[85vh] flex flex-col" id="explanation-box">
+            
+            <div class="flex items-center justify-between pb-4 border-b border-white/15 mb-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-2xl bg-candyPink-500/20 text-candyPink-300 flex items-center justify-center text-lg font-bold border border-candyPink-400/30">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold font-heading text-white">Résultats et Explications</h3>
+                        <p class="text-xs text-candyLilac-200" id="modal-score-subtitle">Score de la session : 0 / 0</p>
+                    </div>
+                </div>
+                <button onclick="closeExplanationModal()" class="w-8 h-8 rounded-xl bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-xs transition-colors">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Conteneur défilant des explications -->
+            <div id="explanations-container" class="space-y-4 overflow-y-auto pr-1 flex-grow mb-4"></div>
+
+            <div class="pt-3 border-t border-white/15 flex justify-end">
+                <button onclick="closeExplanationModal()" class="px-6 py-2.5 rounded-2xl bg-candyPink-500 hover:bg-candyPink-600 text-white font-bold text-xs transition-all shadow-md">
+                    Continuer <i class="fa-solid fa-arrow-right ml-1"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal des Résultats Finaux -->
+    <div id="results-modal" class="fixed inset-0 bg-candyLilac-950/75 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+        <div class="glass-card-dark rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-candyPink-300/40 text-center transform transition-all scale-95 opacity-0 duration-300" id="results-box">
+            
+            <div class="w-20 h-20 bg-gradient-to-tr from-candyPink-400 via-candyLilac-400 to-candySky-400 rounded-3xl flex items-center justify-center mx-auto mb-4 shadow-xl text-white text-3xl border border-white/40">
+                <i class="fa-solid fa-trophy"></i>
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-heading font-extrabold text-white mb-1">Évaluation Terminée !</h2>
+            <p class="text-xs sm:text-sm text-candyLilac-200 font-semibold mb-6">Module : Se Présenter (Prépositions)</p>
+
+            <div class="grid grid-cols-2 gap-4 bg-white/10 rounded-2xl p-4 mb-6 border border-white/15">
+                <div class="text-center border-r border-white/15 pr-2">
+                    <span class="block text-[10px] font-bold text-candyLilac-300 uppercase tracking-wider">Score Total</span>
+                    <span class="text-3xl font-extrabold text-white font-heading" id="final-score">0 / 0</span>
+                </div>
+                <div class="text-center pl-2">
+                    <span class="block text-[10px] font-bold text-candyLilac-300 uppercase tracking-wider">Précision</span>
+                    <span class="text-3xl font-extrabold text-candyPink-300 font-heading" id="final-accuracy">0%</span>
+                </div>
+            </div>
+
+            <button onclick="restartFullQuiz()" class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-candyPink-500 via-candyLilac-500 to-candySky-500 hover:opacity-95 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg transition-all hover:scale-105">
+                <i class="fa-solid fa-rotate-left"></i> Recommencer toute l'évaluation
+            </button>
+
+        </div>
+    </div>
+
+    <footer class="w-full py-4 text-center text-xs font-bold text-candyLilac-950/70 bg-white/40 border-t border-white/50 mt-auto">
+        <p>© 2026 Média de Langue Française • <strong>Se Présenter (Cotton Candy Skies)</strong></p>
+    </footer>
+
+    <script>
+        // Data Structure for Evaluation (Prepositions in Se Présenter - Exactly 10 questions)
+        const quizData = {
+            mainTitle: "Se Présenter",
+            author: "Tia Aris M.",
+            nim: "(2406519)",
+            subjectTitle: "Les Prépositions de la Présentation",
+            sessions: [
+                {
+                    id: 1,
+                    type: "mcq",
+                    title: "Session 1 : Choix de la Préposition Correcte (QCM)",
+                    consigne: "Sélectionnez la préposition correcte pour compléter chaque phrase de présentation. Vous devez répondre aux 5 questions avant de pouvoir valider la session.",
+                    questions: [
+                        {
+                            id: "s1-q1",
+                            questionText: "Bonjour ! Je m'appelle Lucas et j'habite [ ... ] Brésil depuis deux ans.",
+                            options: [
+                                { label: "A", text: "en" },
+                                { label: "B", text: "au" },
+                                { label: "C", text: "à" },
+                                { label: "D", text: "dans" }
+                            ],
+                            correctAnswer: "au",
+                            fullSentence: "Bonjour ! Je m'appelle Lucas et j'habite au Brésil depuis deux ans.",
+                            rule: "On utilise la préposition contractée « au » (à + le) devant un nom de pays masculin singulier commençant par une consonne (ex : au Brésil, au Canada, au Japon)."
+                        },
+                        {
+                            id: "s1-q2",
+                            questionText: "Ma nouvelle collègue, Anna, est originaire et vient [ ... ] Allemagne.",
+                            options: [
+                                { label: "A", text: "du" },
+                                { label: "B", text: "de la" },
+                                { label: "C", text: "d'" },
+                                { label: "D", text: "en" }
+                            ],
+                            correctAnswer: "d'",
+                            fullSentence: "Ma nouvelle collègue, Anna, est originaire et vient d'Allemagne.",
+                            rule: "On utilise « d' » pour indiquer la provenance avec le verbe 'venir' devant un nom de pays féminin ou commençant par une voyelle (ex : d'Allemagne, d'Italie, de France)."
+                        },
+                        {
+                            id: "s1-q3",
+                            questionText: "Pendant la semaine, Sarah étudie la littérature [ ... ] l'université de Sorbonne.",
+                            options: [
+                                { label: "A", text: "à" },
+                                { label: "B", text: "en" },
+                                { label: "C", text: "dans" },
+                                { label: "D", text: "chez" }
+                            ],
+                            correctAnswer: "à",
+                            fullSentence: "Pendant la semaine, Sarah étudie la littérature à l'université de Sorbonne.",
+                            rule: "On utilise « à l' » devant un nom de lieu institutionnel au singulier commençant par une voyelle ou un 'h' muet (ex : à l'université, à l'école)."
+                        },
+                        {
+                            id: "s1-q4",
+                            questionText: "Pour aller à mon travail tous les matins, je me déplace [ ... ] vélo.",
+                            options: [
+                                { label: "A", text: "en" },
+                                { label: "B", text: "à" },
+                                { label: "C", text: "par" },
+                                { label: "D", text: "avec" }
+                            ],
+                            correctAnswer: "à",
+                            fullSentence: "Pour aller à mon travail tous les matins, je me déplace à vélo.",
+                            rule: "On utilise « à » devant les moyens de transport individuels et ouverts sur lesquels on s'assoit (ex : à vélo, à moto, à pied)."
+                        },
+                        {
+                            id: "s1-q5",
+                            questionText: "J'habite avec ma famille en France [ ... ] trois ans.",
+                            options: [
+                                { label: "A", text: "pendant" },
+                                { label: "B", text: "depuis" },
+                                { label: "C", text: "pour" },
+                                { label: "D", text: "dans" }
+                            ],
+                            correctAnswer: "depuis",
+                            fullSentence: "J'habite avec ma famille en France depuis trois ans.",
+                            rule: "On utilise « depuis » pour exprimer une action qui a commencé dans le passé et qui se poursuit encore dans le présent."
+                        }
+                    ]
+                },
+                {
+                    id: 2,
+                    type: "matching",
+                    title: "Session 2 : Correspondance des Phrases",
+                    consigne: "Associez chaque début de phrase (à gauche) à son complément prépositionnel (à droite). Cliquez d'abord sur un élément à gauche, puis sur sa correspondance à droite. Chaque paire s'affichera dans une couleur pastel unique !",
+                    itemsLeft: [
+                        { id: "L1", text: "1. Je suis né en Espagne, mais j'habite..." },
+                        { id: "L2", text: "2. Pour mes études de droit, je réside..." },
+                        { id: "L3", text: "3. Le week-end, j'aime me rendre..." },
+                        { id: "L4", text: "4. Mon frère aîné est ingénieur et il travaille..." },
+                        { id: "L5", text: "5. Tous les soirs, je rentre du travail..." }
+                    ],
+                    itemsRight: [
+                        { id: "R1", text: "a. ...dans un petit studio du centre-ville.", target: "L2" },
+                        { id: "R2", text: "b. ...chez mes grands-parents à la campagne.", target: "L3" },
+                        { id: "R3", text: "c. ...à Lyon depuis trois mois.", target: "L1" },
+                        { id: "R4", text: "d. ...en métro avec mes collègues.", target: "L5" },
+                        { id: "R5", text: "e. ...au Japon pour une grande entreprise.", target: "L4" }
+                    ],
+                    explanations: {
+                        "L1": { sentence: "Je suis né en Espagne, mais j'habite à Lyon depuis trois mois.", rule: "« À » s'utilise obligatoirement devant un nom de ville (ex : à Lyon, à Paris)." },
+                        "L2": { sentence: "Pour mes études de droit, je réside dans un petit studio du centre-ville.", rule: "« Dans » exprime la localisation à l'intérieur d'un espace fermé et déterminé." },
+                        "L3": { sentence: "Le week-end, j'aime me rendre chez mes grands-parents à la campagne.", rule: "« Chez » s'utilise pour indiquer la présence auprès de personnes ou à leur domicile." },
+                        "L4": { sentence: "Mon frère aîné est ingénieur et il travaille au Japon pour une grande entreprise.", rule: "« Au » est la contraction de 'à + le' devant un nom de pays masculin." },
+                        "L5": { sentence: "Tous les soirs, je rentre du travail en métro avec mes collègues.", rule: "« En » s'emploie pour les moyens de transport fermés dans lesquels on entre (ex : en métro, en voiture, en train)." }
+                    }
+                }
+            ]
+        };
+
+        let currentSessionIdx = 0;
+        let userMcqAnswers = {};    // questionId -> selectedText
+        let userPairs = {};         // leftId -> rightId
+        let activeSelectedLeft = null;
+        let isEvaluated = false;
+        let totalUserScore = 0;
+        let totalPossibleScore = 0;
+
+        const pairColorClasses = [
+            'pair-color-0',
+            'pair-color-1',
+            'pair-color-2',
+            'pair-color-3',
+            'pair-color-4'
+        ];
+
+        function loadSession(idx) {
+            currentSessionIdx = idx;
+            userMcqAnswers = {};
+            userPairs = {};
+            activeSelectedLeft = null;
+            isEvaluated = false;
+
+            const session = quizData.sessions[idx];
+            if (!session) return;
+
+            // UI Indicators
+            const sessionBadge = document.getElementById('session-badge');
+            if (sessionBadge) sessionBadge.innerText = `Session ${session.id} / ${quizData.sessions.length}`;
+
+            const sessionTitle = document.getElementById('session-title');
+            if (sessionTitle) sessionTitle.innerText = session.title;
+
+            const sessionConsigne = document.getElementById('session-consigne');
+            if (sessionConsigne) sessionConsigne.innerText = session.consigne;
+
+            // Controls reset
+            const btnNext = document.getElementById('btn-next');
+            if (btnNext) btnNext.classList.add('hidden');
+
+            const validateBtn = document.getElementById('btn-validate');
+            if (validateBtn) {
+                validateBtn.disabled = true;
+                validateBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                validateBtn.classList.remove('hidden');
+            }
+
+            const container = document.getElementById('questions-container');
+            if (container) {
+                container.innerHTML = '';
+                if (session.type === "mcq") {
+                    renderMCQSession(session, container);
+                } else if (session.type === "matching") {
+                    renderMatchingSession(session, container);
+                }
+            }
+
+            updateProgressCounter();
+        }
+
+        // Render Multiple Choice Questions
+        function renderMCQSession(session, container) {
+            session.questions.forEach((q, qIndex) => {
+                const qCard = document.createElement('div');
+                qCard.className = 'glass-card rounded-3xl p-5 sm:p-6 shadow-md border border-white/80';
+                qCard.id = `q-card-${q.id}`;
+
+                qCard.innerHTML = `
+                    <div class="flex items-start justify-between gap-3 mb-4">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-xl bg-candyPink-100 text-candyPink-600 font-extrabold flex items-center justify-center text-xs sm:text-sm shadow-xs border border-candyPink-200">
+                                ${qIndex + 1}
+                            </span>
+                            <h3 class="text-sm sm:text-base font-bold text-candyLilac-950 leading-snug">
+                                ${q.questionText}
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3" id="options-group-${q.id}">
+                        ${q.options.map((opt, optIdx) => `
+                            <div onclick="selectMcqOption('${q.id}', ${optIdx})" id="opt-${q.id}-${optIdx}" class="choice-btn bg-white/80 p-3.5 rounded-2xl border border-candyLilac-200 flex items-center justify-between text-candyLilac-950 font-bold text-xs sm:text-sm">
+                                <div class="flex items-center gap-3">
+                                    <span class="w-6 h-6 rounded-lg bg-candyLilac-100 text-candyLilac-600 flex items-center justify-center text-xs font-extrabold border border-candyLilac-200">
+                                        ${opt.label}
+                                    </span>
+                                    <span>${opt.text}</span>
+                                </div>
+                                <i class="fa-regular fa-circle text-candyLilac-300 text-xs" id="radio-icon-${q.id}-${optIdx}"></i>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(qCard);
+            });
+        }
+
+        // Render Matching Pair Exercise
+        function renderMatchingSession(session, container) {
+            const card = document.createElement('div');
+            card.className = 'glass-card rounded-3xl p-5 sm:p-7 shadow-md border border-white/80';
+            
+            const sortedRight = [...session.itemsRight];
+
+            card.innerHTML = `
+                <p class="text-xs font-extrabold text-candyPink-600 uppercase tracking-wider mb-4">
+                    <i class="fa-solid fa-hand-pointer"></i> Instructions : Cliquez d'abord sur une phrase à gauche, puis sur sa correspondance à droite. Chaque paire s'affichera dans une couleur pastel distincte !
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Column Left -->
+                    <div class="space-y-3">
+                        <h4 class="text-xs font-bold uppercase text-candyLilac-900/60 tracking-wider mb-2">Débuts de phrases</h4>
+                        ${session.itemsLeft.map(item => `
+                            <div id="match-left-${item.id}" onclick="handleLeftClick('${item.id}')" class="match-card bg-white/90 p-4 rounded-2xl border border-candyLilac-200 text-xs sm:text-sm font-bold text-candyLilac-950 flex items-center justify-between">
+                                <span>${item.text}</span>
+                                <span id="badge-left-${item.id}" class="hidden text-[10px] font-bold px-2.5 py-1 rounded-full shadow-xs"></span>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <!-- Column Right -->
+                    <div class="space-y-3">
+                        <h4 class="text-xs font-bold uppercase text-candyLilac-900/60 tracking-wider mb-2">Compléments prépositionnels</h4>
+                        ${sortedRight.map(item => `
+                            <div id="match-right-${item.id}" onclick="handleRightClick('${item.id}')" class="match-card bg-white/90 p-4 rounded-2xl border border-candyLilac-200 text-xs sm:text-sm font-bold text-candyLilac-950 flex items-center justify-between">
+                                <span>${item.text}</span>
+                                <span id="badge-right-${item.id}" class="hidden text-[10px] font-bold px-2.5 py-1 rounded-full shadow-xs"></span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            container.appendChild(card);
+        }
+
+        function selectMcqOption(qId, optIdx) {
+            if (isEvaluated) return;
+            const session = quizData.sessions[currentSessionIdx];
+            const q = session.questions.find(i => i.id === qId);
+            if (!q) return;
+
+            const selectedOpt = q.options[optIdx];
+            userMcqAnswers[qId] = selectedOpt.text;
+
+            q.options.forEach((opt, idx) => {
+                const optElem = document.getElementById(`opt-${qId}-${idx}`);
+                const radioIcon = document.getElementById(`radio-icon-${qId}-${idx}`);
+                if (optElem) {
+                    if (idx === optIdx) {
+                        optElem.classList.add('selected');
+                        if (radioIcon) radioIcon.className = 'fa-solid fa-circle-dot text-candyPink-500 text-xs';
+                    } else {
+                        optElem.classList.remove('selected');
+                        if (radioIcon) radioIcon.className = 'fa-regular fa-circle text-candyLilac-300 text-xs';
+                    }
+                }
+            });
+
+            updateProgressCounter();
+        }
+
+        function handleLeftClick(leftId) {
+            if (isEvaluated) return;
+            activeSelectedLeft = leftId;
+
+            const session = quizData.sessions[currentSessionIdx];
+            session.itemsLeft.forEach(item => {
+                const el = document.getElementById(`match-left-${item.id}`);
+                if (el) {
+                    if (item.id === leftId) {
+                        el.classList.add('active-select');
+                    } else {
+                        el.classList.remove('active-select');
+                    }
+                }
+            });
+        }
+
+        function handleRightClick(rightId) {
+            if (isEvaluated || !activeSelectedLeft) return;
+
+            Object.keys(userPairs).forEach(k => {
+                if (userPairs[k] === rightId) delete userPairs[k];
+            });
+
+            userPairs[activeSelectedLeft] = rightId;
+            activeSelectedLeft = null;
+
+            refreshMatchingUI();
+            updateProgressCounter();
+        }
+
+        function refreshMatchingUI() {
+            const session = quizData.sessions[currentSessionIdx];
+            const pairKeys = Object.keys(userPairs);
+
+            session.itemsLeft.forEach(item => {
+                const el = document.getElementById(`match-left-${item.id}`);
+                const badge = document.getElementById(`badge-left-${item.id}`);
+                if (el) {
+                    el.classList.remove('active-select');
+                    pairColorClasses.forEach(cls => el.classList.remove(cls));
+                    if (userPairs[item.id]) {
+                        const pairIndex = pairKeys.indexOf(item.id) % pairColorClasses.length;
+                        el.classList.add(pairColorClasses[pairIndex]);
+                        if (badge) {
+                            badge.classList.remove('hidden');
+                            badge.innerText = `Paire ${pairIndex + 1}`;
+                            badge.className = `text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-white/70 shadow-xs`;
+                        }
+                    } else if (badge) {
+                        badge.classList.add('hidden');
+                    }
+                }
+            });
+
+            session.itemsRight.forEach(item => {
+                const el = document.getElementById(`match-right-${item.id}`);
+                const badge = document.getElementById(`badge-right-${item.id}`);
+                if (el) {
+                    pairColorClasses.forEach(cls => el.classList.remove(cls));
+                    const mappedLeft = pairKeys.find(k => userPairs[k] === item.id);
+                    if (mappedLeft) {
+                        const pairIndex = pairKeys.indexOf(mappedLeft) % pairColorClasses.length;
+                        el.classList.add(pairColorClasses[pairIndex]);
+                        if (badge) {
+                            badge.classList.remove('hidden');
+                            badge.innerText = `Paire ${pairIndex + 1}`;
+                            badge.className = `text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-white/70 shadow-xs`;
+                        }
+                    } else if (badge) {
+                        badge.classList.add('hidden');
+                    }
+                }
+            });
+        }
+
+        function updateProgressCounter() {
+            const session = quizData.sessions[currentSessionIdx];
+            if (!session) return;
+
+            let answeredCount = 0;
+            let totalCount = 0;
+
+            if (session.type === "mcq") {
+                totalCount = session.questions.length;
+                answeredCount = Object.keys(userMcqAnswers).length;
+            } else if (session.type === "matching") {
+                totalCount = session.itemsLeft.length;
+                answeredCount = Object.keys(userPairs).length;
+            }
+
+            const counterEl = document.getElementById('answered-counter');
+            if (counterEl) counterEl.innerText = `${answeredCount} / ${totalCount}`;
+
+            const validateBtn = document.getElementById('btn-validate');
+            if (validateBtn) {
+                if (answeredCount === totalCount && !isEvaluated) {
+                    validateBtn.disabled = false;
+                    validateBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                    validateBtn.classList.add('hover:scale-105');
+                } else {
+                    validateBtn.disabled = true;
+                    validateBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                    validateBtn.classList.remove('hover:scale-105');
+                }
+            }
+        }
+
+        function validateCurrentSession() {
+            isEvaluated = true;
+            const session = quizData.sessions[currentSessionIdx];
+            let sessionScore = 0;
+            let sessionTotal = 0;
+
+            const explanationsContainer = document.getElementById('explanations-container');
+            if (explanationsContainer) explanationsContainer.innerHTML = '';
+
+            if (session.type === "mcq") {
+                sessionTotal = session.questions.length;
+                session.questions.forEach((q, qIndex) => {
+                    const userAns = userMcqAnswers[q.id];
+                    const isCorrect = userAns === q.correctAnswer;
+                    if (isCorrect) sessionScore++;
+
+                    q.options.forEach((opt, optIdx) => {
+                        const optElem = document.getElementById(`opt-${q.id}-${optIdx}`);
+                        if (optElem) {
+                            optElem.classList.add('disabled');
+                            if (opt.text === q.correctAnswer) {
+                                optElem.classList.remove('selected');
+                                optElem.classList.add('correct-bg');
+                            } else if (opt.text === userAns && !isCorrect) {
+                                optElem.classList.remove('selected');
+                                optElem.classList.add('incorrect-bg');
+                            }
+                        }
+                    });
+
+                    if (explanationsContainer) {
+                        const expCard = document.createElement('div');
+                        expCard.className = `p-4 rounded-2xl border ${isCorrect ? 'bg-emerald-950/70 border-emerald-400/40 text-emerald-100' : 'bg-rose-950/70 border-rose-400/40 text-rose-100'}`;
+                        expCard.innerHTML = `
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="text-base">${isCorrect ? '✅' : '❌'}</span>
+                                <h4 class="font-bold text-sm text-white">Question ${qIndex + 1} : ${q.fullSentence}</h4>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2 text-xs mb-2">
+                                <div class="bg-white/10 p-2.5 rounded-xl">
+                                    <span class="text-[10px] uppercase font-bold text-candyLilac-200 block">Votre réponse :</span>
+                                    <span class="font-extrabold ${isCorrect ? 'text-emerald-300' : 'text-rose-300'}">${userAns || 'Aucune'}</span>
+                                </div>
+                                <div class="bg-white/10 p-2.5 rounded-xl">
+                                    <span class="text-[10px] uppercase font-bold text-candyLilac-200 block">Bonne réponse :</span>
+                                    <span class="font-extrabold text-emerald-300">${q.correctAnswer}</span>
+                                </div>
+                            </div>
+                            <div class="text-xs text-candyLilac-100 leading-relaxed bg-white/10 p-3 rounded-xl border border-white/10">
+                                <span class="block font-bold text-[10px] uppercase text-candyPink-300 tracking-wider mb-1">Règle Grammaticale :</span>
+                                ${q.rule}
+                            </div>
+                        `;
+                        explanationsContainer.appendChild(expCard);
+                    }
+                });
+
+            } else if (session.type === "matching") {
+                sessionTotal = session.itemsLeft.length;
+                session.itemsLeft.forEach((itemL, idx) => {
+                    const chosenRightId = userPairs[itemL.id];
+                    const chosenRightObj = session.itemsRight.find(r => r.id === chosenRightId);
+                    const isCorrect = chosenRightObj && chosenRightObj.target === itemL.id;
+                    if (isCorrect) sessionScore++;
+
+                    const expInfo = session.explanations[itemL.id];
+                    const correctRightObj = session.itemsRight.find(r => r.target === itemL.id);
+
+                    const elL = document.getElementById(`match-left-${itemL.id}`);
+                    if (elL) {
+                        pairColorClasses.forEach(cls => elL.classList.remove(cls));
+                        elL.classList.add(isCorrect ? 'correct-bg' : 'incorrect-bg');
+                    }
+
+                    if (explanationsContainer) {
+                        const expCard = document.createElement('div');
+                        expCard.className = `p-4 rounded-2xl border ${isCorrect ? 'bg-emerald-950/70 border-emerald-400/40 text-emerald-100' : 'bg-rose-950/70 border-rose-400/40 text-rose-100'}`;
+                        expCard.innerHTML = `
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="text-base">${isCorrect ? '✅' : '❌'}</span>
+                                <h4 class="font-bold text-sm text-white">Association ${idx + 1} : ${expInfo.sentence}</h4>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2 text-xs mb-2">
+                                <div class="bg-white/10 p-2.5 rounded-xl">
+                                    <span class="text-[10px] uppercase font-bold text-candyLilac-200 block">Votre association :</span>
+                                    <span class="font-extrabold ${isCorrect ? 'text-emerald-300' : 'text-rose-300'}">${chosenRightObj ? chosenRightObj.text : 'Aucune'}</span>
+                                </div>
+                                <div class="bg-white/10 p-2.5 rounded-xl">
+                                    <span class="text-[10px] uppercase font-bold text-candyLilac-200 block">Association correcte :</span>
+                                    <span class="font-extrabold text-emerald-300">${correctRightObj ? correctRightObj.text : ''}</span>
+                                </div>
+                            </div>
+                            <div class="text-xs text-candyLilac-100 leading-relaxed bg-white/10 p-3 rounded-xl border border-white/10">
+                                <span class="block font-bold text-[10px] uppercase text-candyPink-300 tracking-wider mb-1">Règle Grammaticale :</span>
+                                ${expInfo.rule}
+                            </div>
+                        `;
+                        explanationsContainer.appendChild(expCard);
+                    }
+                });
+            }
+
+            totalUserScore += sessionScore;
+            totalPossibleScore += sessionTotal;
+
+            const modalSubtitle = document.getElementById('modal-score-subtitle');
+            if (modalSubtitle) modalSubtitle.innerText = `Score de la session : ${sessionScore} / ${sessionTotal}`;
+
+            const validateBtn = document.getElementById('btn-validate');
+            if (validateBtn) validateBtn.classList.add('hidden');
+
+            const nextBtn = document.getElementById('btn-next');
+            const nextBtnText = document.getElementById('next-btn-text');
+
+            if (nextBtnText) {
+                if (currentSessionIdx < quizData.sessions.length - 1) {
+                    nextBtnText.innerText = "Session Suivante";
+                } else {
+                    nextBtnText.innerText = "Voir le Bilan Final";
+                }
+            }
+            if (nextBtn) nextBtn.classList.remove('hidden');
+
+            showExplanationModal();
+        }
+
+        function showExplanationModal() {
+            const modal = document.getElementById('explanation-modal');
+            const box = document.getElementById('explanation-box');
+            if (modal && box) {
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    box.classList.remove('scale-95', 'opacity-0');
+                    box.classList.add('scale-100', 'opacity-100');
+                }, 10);
+            }
+        }
+
+        function closeExplanationModal() {
+            const modal = document.getElementById('explanation-modal');
+            const box = document.getElementById('explanation-box');
+            if (modal && box) {
+                box.classList.remove('scale-100', 'opacity-100');
+                box.classList.add('scale-95', 'opacity-0');
+                setTimeout(() => { modal.classList.add('hidden'); }, 200);
+            }
+        }
+
+        function resetCurrentSession() {
+            loadSession(currentSessionIdx);
+        }
+
+        function nextSession() {
+            if (currentSessionIdx < quizData.sessions.length - 1) {
+                loadSession(currentSessionIdx + 1);
+            } else {
+                showFinalResultsModal();
+            }
+        }
+
+        function showFinalResultsModal() {
+            const modal = document.getElementById('results-modal');
+            const box = document.getElementById('results-box');
+
+            const finalScoreEl = document.getElementById('final-score');
+            if (finalScoreEl) finalScoreEl.innerText = `${totalUserScore} / ${totalPossibleScore}`;
+
+            const accuracyEl = document.getElementById('final-accuracy');
+            const percentage = totalPossibleScore > 0 ? Math.round((totalUserScore / totalPossibleScore) * 100) : 0;
+            if (accuracyEl) accuracyEl.innerText = `${percentage}%`;
+
+            if (modal && box) {
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    box.classList.remove('scale-95', 'opacity-0');
+                    box.classList.add('scale-100', 'opacity-100');
+                }, 10);
+            }
+        }
+
+        function restartFullQuiz() {
+            totalUserScore = 0;
+            totalPossibleScore = 0;
+            const resultsModal = document.getElementById('results-modal');
+            if (resultsModal) resultsModal.classList.add('hidden');
+            loadSession(0);
+        }
+
+        function initApp() {
+            const mainTitle = document.getElementById('main-title-display');
+            if (mainTitle) mainTitle.innerText = quizData.mainTitle;
+
+            const authorDisp = document.getElementById('author-display');
+            if (authorDisp) authorDisp.innerText = `${quizData.author} • ${quizData.nim}`;
+
+            const quizTitle = document.getElementById('quiz-title-display');
+            if (quizTitle) quizTitle.innerText = quizData.subjectTitle;
+
+            loadSession(0);
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initApp);
+        } else {
+            initApp();
+        }
+    </script>
+</body>
+</html>
